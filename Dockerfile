@@ -14,6 +14,7 @@ RUN apt-get update && \
     python3-pip \
     libelf-dev \
     bc \
+    bison \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python required packages
