@@ -15,6 +15,7 @@ RUN apt-get update && \
     libelf-dev \
     bc \
     bison \
+    flex \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python required packages
