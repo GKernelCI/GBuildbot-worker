@@ -11,11 +11,15 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get -y dist-upgrade && \
     apt-get -y install -q \
+    python3 \
+    build-essential \
+    libtool \
     python3-pip \
     libelf-dev \
     bc \
     bison \
     flex \
+    autoconf \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python required packages
@@ -24,10 +28,10 @@ RUN pip3 install virtualenv
 RUN pip3 install lavacli
 RUN pip3 install beautifulsoup4
 RUN pip3 install lxml
-RUN pip3 install --user git+https://github.com/kernelci/kcidb.git
 RUN pip3 install jsonschema
 RUN pip3 install pyyaml
 RUN pip3 install python-dateutil
+RUN pip3 install git+https://github.com/kernelci/kcidb.git
 
 # Create fileserver folder for passing files to lava
 RUN mkdir -p /var/www/fileserver
