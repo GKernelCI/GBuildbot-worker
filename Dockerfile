@@ -17,8 +17,10 @@ RUN apt-get update && \
     python3-pip \
     libelf-dev \
     bc \
+    docker.io \
     bison \
     flex \
+    vim \
     autoconf \
     && rm -rf /var/lib/apt/lists/*
 
@@ -31,13 +33,14 @@ RUN pip3 install lxml
 RUN pip3 install jsonschema
 RUN pip3 install pyyaml
 RUN pip3 install python-dateutil
-RUN pip3 install git+https://github.com/kernelci/kcidb.git
+RUN pip3 install jq
+RUN pip3 install --user --use-deprecated=legacy-resolver git+https://github.com/kernelci/kcidb.git@v8
 
 # Create fileserver folder for passing files to lava
 RUN mkdir -p /var/www/fileserver
 RUN chown -R buildbot /var/www/fileserver
 
-USER buildbot
+USER root
 WORKDIR /buildbot
 
 # Add kcidb configuration (if you are not sending to kernelci just comment out this)
