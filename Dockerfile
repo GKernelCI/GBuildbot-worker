@@ -35,7 +35,7 @@ RUN pip3 install pyyaml
 RUN pip3 install python-dateutil
 # Install newer jq fork version compatible with latest pip
 RUN pip3 install jq@git+https://github.com/spbnick/jq.py.git@1.1.2.post1
-RUN pip3 install --user --use-deprecated=legacy-resolver git+https://github.com/kernelci/kcidb.git@v8
+RUN pip3 install --use-deprecated=legacy-resolver git+https://github.com/kernelci/kcidb.git@v8
 
 # Create fileserver folder for passing files to lava
 RUN mkdir -p /var/www/fileserver
