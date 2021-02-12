@@ -13,6 +13,7 @@ RUN apt-get update && \
     apt-get -y install -q \
     python3 \
     build-essential \
+    kmod \
     libtool \
     python3-pip \
     libelf-dev \
