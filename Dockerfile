@@ -11,6 +11,7 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get -y dist-upgrade && \
     apt-get -y install -q \
+    clang clang-11 llvm llvm-11 lld lld-11 \
     python3 \
     build-essential \
     kmod \
@@ -25,6 +26,8 @@ RUN apt-get update && \
     vim \
     autoconf \
     && rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 100
 
 # Install python required packages
 RUN pip3 install --upgrade pip
