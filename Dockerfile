@@ -12,6 +12,7 @@ RUN apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get -y install -q \
     clang clang-11 llvm llvm-11 lld lld-11 \
+    gcc-aarch64-linux-gnu \
     python3 \
     build-essential \
     kmod \
