@@ -58,6 +58,9 @@ WORKDIR /buildbot
 COPY .kernelci-ci-gkernelci.json /home/buildbot/.kernelci-ci-gkernelci.json
 ARG GOOGLE_APPLICATION_CREDENTIALS=~/.kernelci-ci-gkernelci.json
 
+COPY update-llvm.sh /
+RUN apt-get -y remove llvm lld && sh /update-llvm.sh
+
 # Getting lava settings from docker-compose.yml
 ARG LAVA_TOKEN
 ARG LAVA_USER
