@@ -51,6 +51,10 @@ RUN pip3 install --use-deprecated=legacy-resolver git+https://github.com/kernelc
 RUN mkdir -p /var/www/fileserver
 RUN chown -R buildbot /var/www/fileserver
 
+ARG DOCKER_GID
+RUN groupmod -g $DOCKER_GID docker
+RUN usermod --append -G docker buildbot
+
 USER root
 WORKDIR /buildbot
 
@@ -66,6 +70,7 @@ ARG LAVA_TOKEN
 ARG LAVA_USER
 ARG LAVA_SERVER
 
+USER buildbot
 RUN mkdir -p ~/.config/
 RUN printf 'buildbot:\n  uri: http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2' > ~/.config/lavacli.yaml
 RUN lavacli identities add --uri http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2 buildbot
