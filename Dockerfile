@@ -75,5 +75,7 @@ RUN mkdir -p ~/.config/
 RUN printf 'buildbot:\n  uri: http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2' > ~/.config/lavacli.yaml
 RUN lavacli identities add --uri http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2 buildbot
 
+COPY labs.yaml /home/buildbot
+
 # See https://www.gentoo.org/downloads/signatures/
 RUN gpg --keyserver hkps://keys.gentoo.org --receive-keys 13EBBDBEDE7A12775DFDB1BABB572E0E2D182910
