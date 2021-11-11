@@ -1,0 +1,3 @@
+labs:
+  - name: gentoo
+    lavauri: https://user:token@lava.url/RPC2/
