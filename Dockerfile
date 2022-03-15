@@ -18,6 +18,7 @@ RUN apt-get update && \
     gcc-powerpc-linux-gnu \
     gcc-powerpc64-linux-gnu \
     python3 \
+    python3-ruamel.yaml \
     build-essential \
     kmod \
     gnupg \
@@ -29,6 +30,7 @@ RUN apt-get update && \
     bison \
     flex \
     vim \
+    wget \
     autoconf \
     && rm -rf /var/lib/apt/lists/*
 
