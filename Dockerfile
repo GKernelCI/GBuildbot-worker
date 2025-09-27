@@ -79,8 +79,8 @@ ARG LAVA_SERVER
 
 USER buildbot
 RUN mkdir -p ~/.config/
-RUN printf 'buildbot:\n  uri: http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2' > ~/.config/lavacli.yaml
-RUN lavacli identities add --uri http://$LAVA_USER:$LAVA_TOKEN@$LAVA_SERVER/RPC2 buildbot
+RUN printf 'buildbot:\n  token: $LAVA_TOKEN\n  uri: $LAVA_SERVER\n  username: $LAVA_USER'  > ~/.config/lavacli.yaml
+RUN lavacli identities add --uri $LAVA_SERVER --username $LAVA_USER --token $LAVA_TOKEN buildbot
 
 COPY labs.yaml /home/buildbot
 
